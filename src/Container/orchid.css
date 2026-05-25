@@ -32,7 +32,7 @@
   object-fit: cover;  
 }
 .button{
-  font-family: 'Arial', sans-serif;
+  font-family:'Courier New', Courier, monospace;
   position: relative;
   padding: 10px 20px;
   border: 2px solid #2d3436;
@@ -71,6 +71,7 @@
 }
 
 .Profile h1{
+  font-family:'Courier New', Courier, monospace;
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: bolder;
@@ -84,6 +85,7 @@
 }
 
 .Update h1{
+  font-family:'Courier New', Courier, monospace;
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: bolder;
@@ -95,6 +97,7 @@
 }
 
 .input-field input {
+  font-family:'Courier New', Courier, monospace;
   width: 100%;
   padding: 10px 15px;
   border: 1px solid #8d8d8d;
@@ -128,10 +131,12 @@
   padding: 0 5px;
   border-radius: 100px;
 }
+
 .button-list{
   display: flex;
   justify-content: center;
 }
+
 .list {
   width: 100%;
   margin-top: 20px;
@@ -141,6 +146,7 @@
 .list h2 {
   text-align: center;
   margin-bottom: 15px;
+  font-family:'Courier New', Courier, monospace;
 }
 
 .palette {

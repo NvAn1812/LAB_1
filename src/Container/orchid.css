@@ -1,8 +1,14 @@
 .profile-wrapper {
-  display: flex;           
-  align-items: center;     
-  gap: 20px;               
+  display: flex;
+  align-items: center;
+  gap: 20px;
   padding: 10px;
+}
+
+.image-background {
+  background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+  min-height: 100vh;
+  /* chiếm toàn bộ chiều cao màn hình */
 }
 
 .img-profile {
@@ -14,78 +20,72 @@
 .img-profile .image {
   width: 250px;
   height: 300px;
-  border-radius: 10px;     
-  object-fit: cover;       
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.Update-wrapper{
-  display: flex;           
-  align-items: center;     
-  gap: 20px;              
+.Update-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   padding: 10px;
 }
 
-.showlist .image{
-  width: 250px;
-  height: 300px;
-  border-radius: 10px;     
-  object-fit: cover;  
-}
-.button{
-  font-family:'Courier New', Courier, monospace;
+.button {
+  font-family: 'Courier New', Courier, monospace;
   position: relative;
   padding: 10px 20px;
   border: 2px solid #2d3436;
-  color:#2d3436;
+  color: #2d3436;
   background-color: transparent;
   z-index: 1;
   transition: color 0.4s;
 }
 
-.button::before{
+.button::before {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 100%;
-  background-color:#2d3436;
+  background-color: #2d3436;
   transform: translate(-50%, -50%);
   z-index: -1;
   transition: width 0.4s ease;
 }
 
-.button:hover::before{
+.button:hover::before {
   width: 100%;
 }
 
-.button:hover{
+.button:hover {
   color: #fff;
 }
 
-.Profile{
-  border: solid 2px #8d8d8d;
-  padding:1px 45px 30px 20px;
-  border-radius: 30px;
-  background-color: #fff;
-}
-
-.Profile h1{
-  font-family:'Courier New', Courier, monospace;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  font-weight: bolder;
-}
-
-.Update{
-  border: solid 2px #8d8d8d;
+.Profile {
+  border: solid 3px #333;
   padding: 1px 45px 30px 20px;
   border-radius: 30px;
   background-color: #fff;
 }
 
-.Update h1{
-  font-family:'Courier New', Courier, monospace;
+.Profile h1 {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: bolder;
+}
+
+.Update {
+  border: solid 3px #333;
+  padding: 1px 45px 30px 20px;
+  border-radius: 30px;
+  background-color: #fff;
+}
+
+.Update h1 {
+  font-family: 'Courier New', Courier, monospace;
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: bolder;
@@ -97,7 +97,7 @@
 }
 
 .input-field input {
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   width: 100%;
   padding: 10px 15px;
   border: 1px solid #8d8d8d;
@@ -122,8 +122,8 @@
   outline: none;
 }
 
-.input-field input:focus ~ label,
-.input-field input:valid ~ label {
+.input-field input:focus~label,
+.input-field input:valid~label {
   top: 0;
   transform: translateY(-50%) scale(0.8);
   color: #0c0e15;
@@ -132,7 +132,7 @@
   border-radius: 100px;
 }
 
-.button-list{
+.button-list {
   display: flex;
   justify-content: center;
 }
@@ -146,7 +146,7 @@
 .list h2 {
   text-align: center;
   margin-bottom: 15px;
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .palette {
@@ -198,31 +198,44 @@
   margin: 2px 0;
 }
 
-#stats {
-  height: 40px;
-  width: 100%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5em;
-  box-sizing: border-box;
-  color: #bebebe;
-  margin-top: 10px;
-}
-
 #stats svg {
   fill: #bebebe;
   transform: scale(1.2);
 }
 
 
-.modal-image{
+.modal-image {
   width: 400px;
   height: 450px;
 }
 
-.modal-body p{
-  font-family:'Courier New', Courier, monospace;
+.modal-body p {
+  font-family: 'Courier New', Courier, monospace;
 }
 
+.background-image {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.4);
+  background-color: #cccccc;
+  z-index: -1;
+}
+
+.main-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 20px;
+}
+
+.left-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-wrapper{
+  flex: 2;
+}

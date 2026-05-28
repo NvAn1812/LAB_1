@@ -4,6 +4,7 @@ import './orchid.css';
 import { toast } from 'react-hot-toast';
 import { Modal, Button } from 'react-bootstrap';
 import OrchidList from './OrchidList';
+import bgImage from '../assets/bgImage.png';
 
 export default function Orchids() {
 
@@ -43,100 +44,110 @@ export default function Orchids() {
 
     return (
         <>
+            <div className="background-image">
+                <img src={bgImage} alt="Background" />
+            </div>
+
             {/* //Orchid profile */}
-            <div className="profile-wrapper">
-                <div className="Profile">
-                    <h1>Orchid Profile</h1>
-                    <div className="input-field">
+            <div className="main-wrapper">
+                <div className="left-wrapper">
+                    <div className="profile-wrapper">
+                        <div className="Profile">
+                            <h1>Orchid Profile</h1>
+                            <div className="input-field">
 
-                        <input id="id" required type="text" value={orchidProfile.id} onChange={(e) => setOrchidProfile({
-                            ...orchidProfile,
-                            id: e.target.value
-                        })} />
-                        <label htmlFor="id">Enter ID</label>
+                                <input id="id" required type="text" value={orchidProfile.id} onChange={(e) => setOrchidProfile({
+                                    ...orchidProfile,
+                                    id: e.target.value
+                                })} />
+                                <label htmlFor="id">Enter ID</label>
+                            </div>
+
+                            <div className="input-field">
+
+                                <input id="name" required type="text" value={orchidProfile.name} onChange={(e) => setOrchidProfile({
+                                    ...orchidProfile,
+                                    name: e.target.value
+                                })} />
+                                <label htmlFor="name">Enter Name</label>
+                            </div>
+
+                            <div className="input-field">
+
+                                <input id="rating" required type="text" value={orchidProfile.rating} onChange={(e) => setOrchidProfile({
+                                    ...orchidProfile,
+                                    rating: e.target.value
+                                })} />
+                                <label htmlFor="rating">Rating</label>
+                            </div>
+                            <button onClick={handleSearch} className="button">Search Orchid </button>
+                        </div>
+
+                        {orchidProfile.image && (
+                            <div className="img-profile">
+                                <img src={orchidProfile.image} alt={orchidProfile.name} className="image" />
+                            </div>
+                        )}
                     </div>
+                    {/* Update orchid profile */}
+                    <div className="Update-wrapper">
+                        <div className="Update">
+                            <h1>Update Orchid</h1>
 
-                    <div className="input-field">
 
-                        <input id="name" required type="text" value={orchidProfile.name} onChange={(e) => setOrchidProfile({
-                            ...orchidProfile,
-                            name: e.target.value
-                        })} />
-                        <label htmlFor="name">Enter Name</label>
+                            <div className="input-field">
+
+                                <input id="update-id" required type="text" value={updateOrchid.id} onChange={(e) => setUpdateOrchid({
+                                    ...updateOrchid,
+                                    id: e.target.value
+                                })} />
+                                <label htmlFor="update-id">Enter ID</label>
+                            </div>
+
+                            <div className="input-field">
+
+                                <input id="update-name" required type="text" value={updateOrchid.name} onChange={(e) => setUpdateOrchid({
+                                    ...updateOrchid,
+                                    name: e.target.value
+                                })} />
+                                <label htmlFor="update-name">Enter Name</label>
+                            </div>
+
+                            <div className="input-field">
+
+                                <input id="update-rating" required type="text" value={updateOrchid.rating} onChange={(e) => setUpdateOrchid({
+                                    ...updateOrchid,
+                                    rating: e.target.value
+                                })} />
+                                <label htmlFor="update-rating">Enter Rating</label>
+                            </div>
+
+                            <button onClick={() => setOrchidProfile(updateOrchid)} className="button">Update new Orchid</button>
+
+
+                        </div>
                     </div>
-
-                    <div className="input-field">
-
-                        <input id="rating" required type="text" value={orchidProfile.rating} onChange={(e) => setOrchidProfile({
-                            ...orchidProfile,
-                            rating: e.target.value
-                        })} />
-                        <label htmlFor="rating">Rating</label>
-                    </div>
-                    <button onClick={handleSearch} className="button">Search Orchid </button>
                 </div>
 
-                {orchidProfile.image && (
-                    <div className="img-profile">
-                        <img src={orchidProfile.image} alt={orchidProfile.name} className="image" />
-                    </div>
-                )}
-            </div>
-            {/* Update orchid profile */}
-            <div className="Update-wrapper">
-                <div className="Update">
-                    <h1>Update Orchid</h1>
 
-
-                    <div className="input-field">
-
-                        <input id="update-id" required type="text" value={updateOrchid.id} onChange={(e) => setUpdateOrchid({
-                            ...updateOrchid,
-                            id: e.target.value
-                        })} />
-                        <label htmlFor="update-id">Enter ID</label>
-                    </div>
-
-                    <div className="input-field">
-
-                        <input id="update-name" required type="text" value={updateOrchid.name} onChange={(e) => setUpdateOrchid({
-                            ...updateOrchid,
-                            name: e.target.value
-                        })} />
-                        <label htmlFor="update-name">Enter Name</label>
-                    </div>
-
-                    <div className="input-field">
-
-                        <input id="update-rating" required type="text" value={updateOrchid.rating} onChange={(e) => setUpdateOrchid({
-                            ...updateOrchid,
-                            rating: e.target.value
-                        })} />
-                        <label htmlFor="update-rating">Enter Rating</label>
-                    </div>
-
-                    <button onClick={() => setOrchidProfile(updateOrchid)} className="button">Update new Orchid</button>
-
-
+                {/* Presentation of orchidList */}
+                <div className="right-wrapper">
+                    <OrchidList
+                        showList={showList}
+                        onToggleList={() => setShowList(!showList)}
+                        orchids={orchids}
+                        onShowModal={handleShowModal}
+                    />
                 </div>
             </div>
-
-            {/* Presentation of orchidList */}
-            <OrchidList
-                showList={showList}
-                onToggleList={() => setShowList(!showList)}
-                orchids={orchids}
-                onShowModal = {handleShowModal}
-            />
-
             {/* // Modal for orchid details */}
-            <Modal show = {showModal} onHide = {() => setShowModal(false)}>
-                <Modal.Header closeButton>
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                {/* <Modal.Header closeButton>
                     <Modal.Title>{selectedOrchid?.name}</Modal.Title>
-                </Modal.Header>
+                </Modal.Header> */}
 
-                <Modal.Body className = "modal-body">
-                    <img src = {selectedOrchid?.image} alt = {selectedOrchid?.name} className = "modal-image" />
+                <Modal.Body className="modal-body">
+                    <img src={selectedOrchid?.image} alt={selectedOrchid?.name} className="modal-image" />
                     <p>ID: {selectedOrchid?.id}</p>
                     <p>Name: {selectedOrchid?.name}</p>
                     <p>Rating: {selectedOrchid?.rating}</p>
@@ -145,8 +156,8 @@ export default function Orchids() {
                     <p>Category: {selectedOrchid?.category}</p>
                 </Modal.Body>
 
-                <Modal.Footer className = "modal-footer">
-                    <Button variant = "secondary" onClick = {() => setShowModal(false)} >
+                <Modal.Footer className="modal-footer">
+                    <Button variant="secondary" onClick={() => setShowModal(false)} >
                         Close
                     </Button>
                 </Modal.Footer>

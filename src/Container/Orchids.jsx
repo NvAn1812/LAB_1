@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { orchids } from '../ListOfOrchids/ListOfOrchids';
-import './Orchid.css';
+import './orchid.css';
 import { toast } from 'react-hot-toast';
+import { Modal, Button } from 'react-bootstrap';
+import OrchidList from './OrchidList';
 
 export default function Orchids() {
 
@@ -18,6 +20,13 @@ export default function Orchids() {
         rating: "",
     })
 
+    const [showModal, setShowModal] = useState(false)
+    const [selectedOrchid, setSelectedOrchid] = useState(null)
+
+    const handleShowModal = (orchid) => {
+        setSelectedOrchid(orchid);
+        setShowModal(true);
+    }
 
 
     const [showList, setShowList] = useState(false)
@@ -34,6 +43,7 @@ export default function Orchids() {
 
     return (
         <>
+            {/* //Orchid profile */}
             <div className="profile-wrapper">
                 <div className="Profile">
                     <h1>Orchid Profile</h1>
@@ -72,7 +82,7 @@ export default function Orchids() {
                     </div>
                 )}
             </div>
-
+            {/* Update orchid profile */}
             <div className="Update-wrapper">
                 <div className="Update">
                     <h1>Update Orchid</h1>
@@ -111,37 +121,37 @@ export default function Orchids() {
                 </div>
             </div>
 
+            {/* Presentation of orchidList */}
+            <OrchidList
+                showList={showList}
+                onToggleList={() => setShowList(!showList)}
+                orchids={orchids}
+                onShowModal = {handleShowModal}
+            />
 
+            {/* // Modal for orchid details */}
+            <Modal show = {showModal} onHide = {() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>{selectedOrchid?.name}</Modal.Title>
+                </Modal.Header>
 
+                <Modal.Body className = "modal-body">
+                    <img src = {selectedOrchid?.image} alt = {selectedOrchid?.name} className = "modal-image" />
+                    <p>ID: {selectedOrchid?.id}</p>
+                    <p>Name: {selectedOrchid?.name}</p>
+                    <p>Rating: {selectedOrchid?.rating}</p>
+                    <p>Color: {selectedOrchid?.color}</p>
+                    <p>Origin: {selectedOrchid?.origin}</p>
+                    <p>Category: {selectedOrchid?.category}</p>
+                </Modal.Body>
 
-            <div className="button-list">
-                <button onClick={() => setShowList(!showList)} className="button">{showList ? "Hide List" : "Show List"}</button>
-            </div>
+                <Modal.Footer className = "modal-footer">
+                    <Button variant = "secondary" onClick = {() => setShowModal(false)} >
+                        Close
+                    </Button>
+                </Modal.Footer>
 
-            {showList && (
-                <div className="list">
-                    <h2>Danh sách hoa lan có sẵn</h2>
-                    <div className="palette">
-                        {orchids.map((orchid) => (
-                            <div className="color" key={orchid.id}>
-                                <div className="orchid-card">
-                                    <img src={orchid.image} alt={orchid.name} />
-                                    <span>ID: {orchid.id}</span>
-                                    <span>{orchid.name}</span>
-                                    <span>{orchid.rating}⭐</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div id="stats">
-                        <span>{orchids.length} orchids</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                            <path d="M4 7.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5S5.5 9.83 5.5 9 4.83 7.5 4 7.5zm10 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-5 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5S9.83 7.5 9 7.5z"></path>
-                        </svg>
-                    </div>
-                </div>
-            )}
-
+            </Modal>
         </>
     )
 }

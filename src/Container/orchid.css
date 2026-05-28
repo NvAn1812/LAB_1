@@ -216,3 +216,13 @@
   transform: scale(1.2);
 }
 
+
+.modal-image{
+  width: 400px;
+  height: 450px;
+}
+
+.modal-body p{
+  font-family:'Courier New', Courier, monospace;
+}
+

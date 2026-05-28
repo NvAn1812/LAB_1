@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import Orchids from "./Container/Orchids.jsx";
 import { Toaster } from 'react-hot-toast';
 import './Container/orchid.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 createRoot(document.getElementById('root')).render(
@@ -12,5 +14,6 @@ createRoot(document.getElementById('root')).render(
       position="top-center"
       reverseOrder={false}
     />
+    
   </StrictMode>,
 )
